@@ -1,0 +1,24 @@
+INTERVIEW BIT
+1.Second highest salary:
+SELECT MAX(Salary) AS sec_high
+FROM Employees
+WHERE Salary < (SELECT MAX(Salary) FROM Employees);
+
+2.Write a SQL query to find the names of employees who have not been assigned to any project.
+
+SELECT e.name
+FROM Employees AS e
+LEFT JOIN Products AS p
+ON e.employeeid = p.employeeid
+WHERE p.employeeid IS NULL;
+
+3.In the Student table, the marks column contains a list of values separated by commas. How can you determine the number of values in this comma-separated list?
+
+SELECT id, name, marks, LENGTH(marks) - LENGTH(REPLACE(marks, ',', '')) + 1 AS num_marks
+FROM Student
+WHERE id = 1;
+
+4. In the Student table, the marks column contains a list of values separated by commas. How can you determine the number of values in this comma-separated list?
+SELECT *
+FROM Employees
+WHERE STR_TO_DATE(JoinDate, '%d-%m-%Y') >= CURDATE() - INTERVAL 30 DAY;
