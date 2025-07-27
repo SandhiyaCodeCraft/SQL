@@ -1,0 +1,25 @@
+1.BETWEEN
+Write the SQL query to select name and topspeed from the table car where topspeed's between 150 and 250.
+The order of the columns in the result set must be name, topspeed.
+The result set must be ordered by the column topspeed in descending order.
+
+SELECT name, topspeed FROM car WHERE topspeed BETWEEN 150 AND 250 ORDER BY topspeed DESC;
+
+2.NOT 0
+Write the SQL query to select the itemname from the table menu where quantity is not 0.
+The result set must be ordered by the column itemname in ascending order.
+
+SELECT itemname FROM menu WHERE quantity!=0 ORDER BY itemname;
+
+3.NOT NULL
+SELECT * FROM employee WHERE salary IS NOT NULL;
+
+4.DISTINCT:
+Write the SQL query to return the count of the unique price values in the table mill where price is greater than 10000.
+
+SELECT COUNT(DISTINCT price) FROM mill WHERE price > 10000;
+
+5.ARITHMETIC OPERATIONS
+Write the SQL to select the columns name and total which is the sum of the values in the columns physics, maths and chemistry from the table student. The result set must be ordered by name in ascending order.
+
+SELECT name,(physics+maths+chemistry) AS total FROM marks ORDER BY name;
