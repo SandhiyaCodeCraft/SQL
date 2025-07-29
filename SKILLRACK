@@ -23,3 +23,24 @@ SELECT COUNT(DISTINCT price) FROM mill WHERE price > 10000;
 Write the SQL to select the columns name and total which is the sum of the values in the columns physics, maths and chemistry from the table student. The result set must be ordered by name in ascending order.
 
 SELECT name,(physics+maths+chemistry) AS total FROM marks ORDER BY name;
+
+6.GROUP BY
+
+Write the SQL to select list empid and the total salary paid to that empid from the employee table.
+
+SELECT empid,SUM(salary) as total FROM employee GROUP BY empid;
+
+7.GROUP BY HAVING
+Write the SQL query to select empid andthe total salary paid to the employee from the table employee where the total salary paid is more than 25000. (An employee is identified by the empid column)
+
+SELECT empid, SUM(salary) AS total FROM employee GROUP BY empid HAVING total > 25000;
+
+UPDATE BASICS
+
+1.Write the SQL query to update the id to 456 whose bookname is Gitanjali.
+UPDATE book SET id=456 WHERE bookname = 'Gitanjali';
+
+2.Write the SQL query to update the maker as 'Lenovo' and the model as 'A1000' for the records (rows) where id is 3 in the mobile table.
+UPDATE mobile SET maker 'Lenovo',model='A1000' WHERE id=3;...........dont use 'and' use(,) in if have to set two things
+
+
