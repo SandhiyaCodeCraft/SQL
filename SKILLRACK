@@ -43,4 +43,6 @@ UPDATE book SET id=456 WHERE bookname = 'Gitanjali';
 2.Write the SQL query to update the maker as 'Lenovo' and the model as 'A1000' for the records (rows) where id is 3 in the mobile table.
 UPDATE mobile SET maker 'Lenovo',model='A1000' WHERE id=3;...........dont use 'and' use(,) in if have to set two things
 
+3.Write the SQL query to update the column discount as 'Y' for the rows (records) where quantity exceeds 5 and bill exceeds 100 or the bill exceeds 200 in the table menu.
+UPDATE menu SET discount = 'Y' WHERE quantity > 5 AND (bil1>108 OR bill>200);
 
