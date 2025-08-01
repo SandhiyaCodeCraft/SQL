@@ -1,3 +1,13 @@
+CREATE TABLE:
+
+CREATE TABLE garments(
+productid INTEGER,
+productname VARCHAR(100),
+gender VARCHAR(1),
+productsize VARCHAR(4),
+price INTEGER
+);
+
 1.BETWEEN
 Write the SQL query to select name and topspeed from the table car where topspeed's between 150 and 250.
 The order of the columns in the result set must be name, topspeed.
@@ -45,4 +55,18 @@ UPDATE mobile SET maker 'Lenovo',model='A1000' WHERE id=3;...........dont use 'a
 
 3.Write the SQL query to update the column discount as 'Y' for the rows (records) where quantity exceeds 5 and bill exceeds 100 or the bill exceeds 200 in the table menu.
 UPDATE menu SET discount = 'Y' WHERE quantity > 5 AND (bil1>108 OR bill>200);
+
+4.Write the update statement to multiply the column value salary by 2.5 for the first three staf whose staffid is 101 from the table staff.
+UPDATE staff SET salary salary*2.5 WHERE staffid='101' LIMIT 3;
+
+DELETE BASICS
+
+1.Write the SQL query to delete the rows from the table customer where the value of the column age is 27.
+DELETE FROM customer WHERE age =27;
+
+2.Write the SQL statement to delete the rows from the table college where location is Bangalore or ghaziabad.
+DELETE FROM college WHERE location = 'Bangalore' OR location ='ghaziabad';
+
+3.Write the delete statement to delete the records (rows) from the table menu where itemname s not Pen and itemprice is 10.
+DELETE FROM menu WHERE itemname = 'Pen' and itemprice = '10';
 
