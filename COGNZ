@@ -1,0 +1,24 @@
+1.
+SELECT categoryid, categoryname
+FROM cartoon
+WHERE categoryname LIKE 'M%';
+
+2.
+SELECT transactionid, amount, transactiontype 
+FROM transactions
+WHERE transactiontype LIKE 'Sa%' 
+  AND amount > 10000 
+  AND amount < 50000;
+3.
+SELECT c.firstname AS FIRSTNAME,
+       c.contact AS CONTACT,
+       a.balance AS BALANCE
+FROM customers c 
+JOIN accounts a 
+    ON c.customerid = a.customerid
+JOIN account_type act 
+    ON a.accounttype = act.accounttype
+WHERE act.accounttype LIKE 'Sa%'
+ORDER BY c.firstname;
+
+
