@@ -21,4 +21,73 @@ JOIN account_type act
 WHERE act.accounttype LIKE 'Sa%'
 ORDER BY c.firstname;
 
+4.PRINT DETAILS OF WORKER FIRST NAME ENDS WITH H AND CONTAIN 6 ALPHABETS
+ SELECT*
+ FROM Customers
+ WHERE firstname LIKE '_____h';
+
+5.Write an SQL query to print details of the Workers whose FIRST_NAME contains 'a'.
+
+SELECT*
+FROM Workers
+WHERE FIRST_NAME LIKE '%a%';
+
+6.Write an SQL query to fetch the no. of workers for each department in the descending order.
+
+  SELECT department,COUNT(department) AS no_of_workers
+  FROM Customers
+  GROUP BY department
+  ORDER BY no_of_workers DESC;
+
+7.Write an SQL query to print details of the Workers who have joined in Feb'2014
+
+SELECT *
+FROM Customers
+WHERE joiningdate BETWEEN DATE '2014-02-01' AND DATE '2014-02-28';
+
+(or)
+WHERE joiningdate >= DATE '2014-02-01'AND joiningdate <  DATE '2014-03-01'..........use next month 1st date
+
+
+8.SELECT CURRENT_DATE;
+  SELECT CURRENT_TIME;
+  SELECT CURRENT_TIMESTAMP;............to display date and time together
+
+9. HIGHEST 5 SALARY EMPLOYEE DETAILS
+
+SELECT *
+FROM employee
+ORDER BY salary DESC
+FETCH FIRST 5 ROWS ONLY;.........................LIMIT IS NOT IN ANSISQL
+
+
+10.5th HIGHEST SALARY
+
+SELECT salary
+FROM employee e1
+WHERE 4 = (
+    SELECT COUNT(DISTINCT salary)
+    FROM employee e2
+    WHERE e2.salary > e1.salary
+);
+
+11.Write an SQL query to fetch the list of employees with the same salary
+
+SELECT w1.*....................return all colums of first table
+FROM workers w1
+JOIN workers w2........................joined with same table
+ON w1.salary = w2.salary
+WHERE w1.empid <> w2.empid;
+
+12.Write an SQL query to fetch the departments that have less than 4 people in it.
+
+ SELECT department,COUNT(department) AS peopcount
+  FROM employee
+  GROUP BY department
+  HAVING COUNT(department) < 4;...............dont use aliases like we calculated peopcount
+
+13.WRITE A SQL QUERY TO PRINT FIRSTNAME FROM WORKER TABLE AFTER REPLACING 'a','A'.
+
+SELECT REPLACE(first_name,'a','A')
+FROM workers.
 
