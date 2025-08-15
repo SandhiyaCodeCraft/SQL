@@ -91,3 +91,22 @@ WHERE w1.empid <> w2.empid;
 SELECT REPLACE(first_name,'a','A')
 FROM workers.
 
+14.Write an SQL query to display:
+FLIGHT_ID, DEPARTURE_DATE, DEPARTURE_TIME, FLIGHT_FROM, FLIGHT_TO
+The flight ID, departure date, departure time, departure location, and destination of fli departing after (2024-02-06).
+Sort the results by departure time in ascending order.
+
+SELECT flight_id,departure_date,departure_time,flight_from,flight_to
+FROM flights
+WHERE departure_date > '2024-02-06'
+ORDER BY departure_time ASC;
+
+15.PATIENTID, PAYMENTSTATUS, OUTSTANDING AMOUNT
+The PatientID, PaymentStatus, and Outstanding Amount (use alias "Outstanding Amount") for patients whose bill has not been fully paid (i.e., PaidAmount is less than TotalAmount).
+Note: Outstanding Amount = TotalAmount - PaidAmount
+
+SELECT patient_id,paymentstatus,(Totalamount-paidamount) AS Outstanding_amount
+FROM patients
+WHERE paidamount < Totalamount;
+
+
