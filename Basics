@@ -10,15 +10,20 @@ SELECT e.name
 FROM Employees AS e
 LEFT JOIN Products AS p
 ON e.employeeid = p.employeeid
-WHERE p.employeeid IS NULL;
+WHERE p.employeeid IS NULL;...............here NULL means that id is not there
 
 3.In the Student table, the marks column contains a list of values separated by commas. How can you determine the number of values in this comma-separated list?
 
-SELECT id, name, marks, LENGTH(marks) - LENGTH(REPLACE(marks, ',', '')) + 1 AS num_marks
+SELECT id, name, marks, CHAR_LENGTH(marks) - CHAR_LENGTH(REPLACE(marks, ',', '')) + 1 AS num_marks
 FROM Student
 WHERE id = 1;
 
-4. In the Student table, the marks column contains a list of values separated by commas. How can you determine the number of values in this comma-separated list?
+eg:10,20,30,40,50
+LENGTH(marks)=14
+LENGTH(REPLACE(marks,',','')=10
+14-10=4+1=5
+
+4. 
 SELECT *
 FROM Employees
-WHERE STR_TO_DATE(JoinDate, '%d-%m-%Y') >= CURDATE() - INTERVAL 30 DAY;
+WHERE JoinDate >= CURRENT_DATE - INTERVAL '30' DAY;
