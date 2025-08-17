@@ -1,3 +1,7 @@
+REMEMBER
+USE HAVING FOR FILTERING GROUP BY
+IF WE USE COUNT,SUM,MAX MEANS ..THERE WE HAVE TO USE GROUP BY
+USE FETCH FIRST 5 ROWS ONLY .....INSTEAD OF LIMIT
 1.
 SELECT categoryid, categoryname
 FROM cartoon
@@ -108,5 +112,51 @@ Note: Outstanding Amount = TotalAmount - PaidAmount
 SELECT patient_id,paymentstatus,(Totalamount-paidamount) AS Outstanding_amount
 FROM patients
 WHERE paidamount < Totalamount;
+
+16.COMBINE RESULT SET OF TWO SELECT STATEMENTS
+SELECT first_name, age
+FROM students
+
+UNION
+
+SELECT customer_name, customer_age
+FROM customers;
+
+17.DELETE ALL THE ROWS FROM TABLE BUT KEEP ITS STRUCTURE
+
+TRUNCATE TABLE employee;
+
+18.Write query to combine two rows with the help of Left Join.........two rows means one from 1st table and other from 2nd table
+
+SELECT e.first_name,d.department_name
+FROM employees AS e
+LEFT JOIN departments AS d ON e.department_id = d.department_id;
+
+19.Write an SQL query to display the user_id, first_name, and last_name of the top 5 users who have sent the most messages, 
+along with the number of messages they have sent. The output should be sorted in descending order of user_id.
+
+SELECT u.user_id,u.first_name,u.last_name,COUNT(m.message_id) AS messages_sent
+FROM users u
+JOIN messages m ON u.user_id = m.sender_id
+GROUP BY u.user_id,u.first_name,u.last_name
+ORDER BY u.user_id DESC
+FETCH FIRST 5 ROWS ONLY;
+
+20.QUERY THE TOTAL POPULATION OF ALL THE CITIES WHERE DISTICT IS CALIFORNIA
+
+SELECT SUM(population) AS total_pop
+FROM city
+WHERE district = 'california';
+
+21.QUERY to round the total value of lat to 2 decimal places
+
+SELECT ROUND(SUM(lat), 2) AS value
+FROM station;
+
+
+
+
+
+
 
 
