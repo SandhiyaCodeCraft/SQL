@@ -43,7 +43,7 @@ SELECT empid,SUM(salary) as total FROM employee GROUP BY empid;
 7.GROUP BY HAVING
 Write the SQL query to select empid andthe total salary paid to the employee from the table employee where the total salary paid is more than 25000. (An employee is identified by the empid column)
 
-SELECT empid, SUM(salary) AS total FROM employee GROUP BY empid HAVING total > 25000;
+SELECT empid, SUM(salary) AS total FROM employee GROUP BY empid HAVING SUM(salary) > 25000;
 
 UPDATE BASICS
 
@@ -57,7 +57,7 @@ UPDATE mobile SET maker 'Lenovo',model='A1000' WHERE id=3;...........dont use 'a
 UPDATE menu SET discount = 'Y' WHERE quantity > 5 AND (bil1>108 OR bill>200);
 
 4.Write the update statement to multiply the column value salary by 2.5 for the first three staf whose staffid is 101 from the table staff.
-UPDATE staff SET salary salary*2.5 WHERE staffid='101' LIMIT 3;
+UPDATE staff SET salary salary*2.5 WHERE staffid='101' FETCH FIRST 3 ROWS ONLY;
 
 DELETE BASICS
 
@@ -68,5 +68,5 @@ DELETE FROM customer WHERE age =27;
 DELETE FROM college WHERE location = 'Bangalore' OR location ='ghaziabad';
 
 3.Write the delete statement to delete the records (rows) from the table menu where itemname s not Pen and itemprice is 10.
-DELETE FROM menu WHERE itemname = 'Pen' and itemprice = '10';
+DELETE FROM menu WHERE itemname <> 'Pen' and itemprice = '10';
 
