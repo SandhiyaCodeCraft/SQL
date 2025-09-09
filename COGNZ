@@ -1,29 +1,33 @@
 REMEMBER
-USE HAVING FOR FILTERING GROUP BY
-IF WE USE COUNT,SUM,MAX MEANS ..THERE WE HAVE TO USE GROUP BY
-USE FETCH FIRST 5 ROWS ONLY .....INSTEAD OF LIMIT
+1.USE HAVING UNDER GROUP BY filtering
+2.IF WE USE COUNT,SUM,MAX MEANS ..THERE WE HAVE TO USE GROUP BY
+3.USE FETCH FIRST 5 ROWS ONLY .....INSTEAD OF LIMIT
+4.use datatype DATE in ANSISQL
+5.<>=not equal
+6.Avoid usng alaising name
+7.In joins always check the tablename is accessed in every place
 1.
 SELECT categoryid, categoryname
 FROM cartoon
 WHERE categoryname LIKE 'M%';
 
 2.
-SELECT transactionid, amount, transactiontype 
+SELECT transactionid AS TRANSACTION_ID,
+       amount AS TRANSACTION_AMOUNT, 
+       transactiontype AS TRANSACTION_TYPE 
 FROM transactions
-WHERE transactiontype LIKE 'Sa%' 
+WHERE transactiontype = 'Debit'
   AND amount > 10000 
   AND amount < 50000;
 3.
-SELECT c.firstname AS FIRSTNAME,
-       c.contact AS CONTACT,
-       a.balance AS BALANCE
-FROM customers c 
-JOIN accounts a 
-    ON c.customerid = a.customerid
-JOIN account_type act 
-    ON a.accounttype = act.accounttype
-WHERE act.accounttype LIKE 'Sa%'
-ORDER BY c.firstname;
+ SELECT c.First_Name AS FIRST_NAME,
+         c.Contact AS CONTACT,
+         a.Balance AS BALANCE
+  FROM customer c
+  JOIN account a ON c.Customer_ID = a.Customer_ID
+  JOIN  account_type at ON a.Account_Type_ID = at.Account_Type_ID
+  WHERE at.Account_type_Name LIKE 'Sa%'
+  ORDER BY c.First_Name;
 
 4.PRINT DETAILS OF WORKER FIRST NAME ENDS WITH H AND CONTAIN 6 ALPHABETS
  SELECT*
@@ -38,10 +42,10 @@ WHERE FIRST_NAME LIKE '%a%';
 
 6.Write an SQL query to fetch the no. of workers for each department in the descending order.
 
-  SELECT department,COUNT(department) AS no_of_workers
-  FROM Customers
+  SELECT department,COUNT(*) AS no_of_workers
+  FROM workers
   GROUP BY department
-  ORDER BY no_of_workers DESC;
+  ORDER BY no_of_workers DESC;//ORDER BY COUNT(*) DESC...ANSI SQL OLD
 
 7.Write an SQL query to print details of the Workers who have joined in Feb'2014
 
@@ -51,8 +55,7 @@ WHERE joiningdate BETWEEN DATE '2014-02-01' AND DATE '2014-02-28';
 
 (or)
 WHERE joiningdate >= DATE '2014-02-01'AND joiningdate <  DATE '2014-03-01'..........use next month 1st date
-
-
+//IN MYSQL NO NEED TO SPECIFY datatype DATE 
 8.SELECT CURRENT_DATE;
   SELECT CURRENT_TIME;
   SELECT CURRENT_TIMESTAMP;............to display date and time together
@@ -93,7 +96,7 @@ WHERE w1.empid <> w2.empid;
 13.WRITE A SQL QUERY TO PRINT FIRSTNAME FROM WORKER TABLE AFTER REPLACING 'a','A'.
 
 SELECT REPLACE(first_name,'a','A')
-FROM workers.
+FROM workers;
 
 14.Write an SQL query to display:
 FLIGHT_ID, DEPARTURE_DATE, DEPARTURE_TIME, FLIGHT_FROM, FLIGHT_TO
