@@ -220,6 +220,39 @@ FROM cars
 WHERE car_type IN ('Hatchback', 'SUV')
 ORDER BY car_id;
 
+30.
+SELECT  c.cust_name AS customer_name,
+        c.city AS Customer_city,  
+        s.name AS Salesman_name,
+        s.commission AS Commision
+FROM Customer c
+JOIN Salesman s
+ON c.salesman_id = s.salesman_id
+WHERE s.commission > 0.12;
+
+31....................first join using cust_id because of the (order and customer table)...the resultant is joined with salesman using salesman_id with order table not with customer...becauseof we need order details mentioned.
+SELECT  o.ord_no AS order_no,
+        o.ord_date AS order_date,  
+        o.purch_amt AS purchase_amt,
+        c.cust_name AS customer_name,
+        s.name AS salesman_name,
+        s.commission AS commission
+FROM Orders o
+JOIN Customer c
+ ON o.customer_id = c.customer_id
+JOIN salesman s 
+ ON o.salesman_id = s.salesman_id;
+
+32.2nd query
+
+ SELECT t.train_name AS Train_name,   
+         tt.type_description AS Description,
+         ts.station_name AS start_station_name
+  FROM train_details_td t
+  JOIN train_type_tbl tt
+    ON t.train_type = tt.train_type
+  JOIN train_stations_tbl ts
+    ON t.train_from = ts.station_id;
 
 
 
