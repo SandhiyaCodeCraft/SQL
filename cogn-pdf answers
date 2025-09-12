@@ -1,0 +1,11 @@
+1.
+SELECT first_name, last_name, password
+FROM users
+WHERE LOWER(password) LIKE CONCAT('%', LOWER(first_name), '%');
+
+2.
+SELECT genre_name,COUNT(*) AS Track_count
+FROM tracks 
+GROUP BY genre_name
+ORDER BY Track_count DESC,genre_name ASC
+LIMIT 1;
