@@ -190,7 +190,7 @@ SELECT c.course_id,c.course_name,sc.day,sc.starttime
   JOIN schedule sc ON sc.schedule_id = s.schedule_id
   WHERE sc.day = 'wednesday';
 
-26....................................join condition name is diff but same data
+26....................................join column name is diff but same data
 SELECT td.train_id, td.train_name
 FROM train_details_tbl td
 JOIN train_stations_tbl ts 
@@ -254,7 +254,24 @@ JOIN salesman s
   JOIN train_stations_tbl ts
     ON t.train_from = ts.station_id;
 
+33............here three tables involved but marks only have cnnection with other 2 ....so first will be marks....and last table also joined with marks
+  SELECT s.student_name AS NAME,
+         sb.subject_name AS SUB_NAME,  
+         m.value AS MARKS
+  FROM Marks m
+  JOIN Student s
+    ON m.student_id = s.student_id
+  JOIN Subject sb
+    ON m.subject_id = sb.subject_id;
 
+
+34................here why we use left join means it displays the dept with zero count also
+SELECT d.department_name AS DEPT_NAME,
+       COUNT(s.student_id) AS TOTAL_STUD
+FROM Department d
+LEFT JOIN Student s
+       ON d.department_id = s.department_id
+GROUP BY d.department_name;
 
 
 
