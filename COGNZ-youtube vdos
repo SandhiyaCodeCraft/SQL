@@ -14,6 +14,17 @@ In MySQL there is no wildcards
   '[aeiouAEIOU]$'...endswith
   
  '^[aeiouAEIOU]'.*  '[aeiouAEIOU]$'.. .startswithand endwith any vowels
+5.CONCAT(firstname, ' ',lastname)
+6.specify alais if we use subquery as table
+SELECT department_id,
+       employee_id,
+       salary
+FROM (
+    SELECT e.*,
+           RANK() OVER (PARTITION BY department_id ORDER BY salary DESC) AS rnk
+    FROM employees e
+) t.................................................in this query the select from table is created using subquery....so specify by any alias name like this t.
+WHERE rnk <= 2;
 
 1.
 SELECT categoryid, categoryname
@@ -272,6 +283,63 @@ FROM Department d
 LEFT JOIN Student s
        ON d.department_id = s.department_id
 GROUP BY d.department_name;
+
+35.
+
+SELECT country,COUNT(playerid) AS Total_players
+FROM players
+GROUP BY country;
+
+36.
+SELECT a.name AS Animal_name,
+         a.species AS species, 
+         a.gender AS Gender,
+         CONCAT(c.firstname,' ',c.lastname) AS caretaker_name
+FROM Animals a
+JOIN animal_caretaker ac ON a.animal_id = ac.animal_id
+JOIN caretaker c ON ac.caretaker_id = c.caretaker_id
+WHERE a.gender = 'Male';
+
+FULL SQL QUERIES VDO......WATCH THERE....SOME I MENTION HERE
+
+1.top 2 high salary of each dept
+SELECT department_id,
+       employee_id,
+       salary
+FROM (
+    SELECT e.*,
+           RANK() OVER (PARTITION BY department_id ORDER BY salary DESC) AS rnk
+    FROM employees e
+) t
+WHERE rnk <= 2;
+
+2.Earliest joined person in each dept
+
+SELECT e.name,
+       e.join_date,
+       e.dept_id
+FROM Employees e
+JOIN Department d ON e.Dept_id = d.Dept_id
+WHERE e.join_date = (
+    SELECT MIN(join_date)
+    FROM employees
+    WHERE dept_id = e.dept_id
+);
+
+3.DEPARTMENT WITH NO EMPLOYEES
+SELECT d.dept_name
+FROM Department d
+LEFT JOIN Employees e ON d.dept_id = e.dept_id
+WHERE e.dept_id IS NULL;
+
+or
+
+SELECT dept_name
+FROM Department
+WHERE dept_id NOT IN (SELECT dept_id FROM Employees);
+
+
+
 
 
 
