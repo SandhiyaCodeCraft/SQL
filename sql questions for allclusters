@@ -1,1 +1,58 @@
+1.
+SELECT 
+    c.CabinCrew_ID,
+    c.First_Name,
+    c.Last_Name,
+    c.Contact,
+    c.Flight_ID
+FROM 
+    CabinCrew c
+JOIN 
+    Flight f ON c.Flight_ID = f.Flight_ID
+WHERE 
+    c.First_Name LIKE 'A%' 
+    AND f.Flight_No LIKE '%1';
+2.
+SELECT 
+    td.train_name AS TRAIN_NAME, 
+    td.train_type AS TRAIN_TYPE
+FROM 
+    train_details_tbl td
+WHERE 
+    td.train_speed < 50;
+3.
+SELECT 
+    e.empid AS EMPID,
+    e.empname AS EMPNAME,
+    d.deptname AS DEPTNAME,
+    s.house_rent_allowance AS HOUSE_RENT_ALLOWANCE
+FROM employee_tbl e
+JOIN department_tbl d ON e.deptid = d.deptid
+JOIN salary_info s ON e.empcategory = s.empcategory
+WHERE d.location IN ('BANGALORE', 'COCHIN');
+
+4.
+SELECT like_id, post_id
+FROM likes
+WHERE like_date < '2024-02-20';
+
+5.
+SELECT DISTINCT p.first_name AS FIRST_NAME,
+                p.contact AS CONTACT
+FROM passenger p
+JOIN boardingpass b 
+      ON p.passenger_id = b.passenger_id
+JOIN flight f 
+      ON f.flight_id = b.flight_id
+WHERE f.flight_from = 'Hong Kong'
+  AND f.flight_id = 4
+  AND b.meal = 'Vegetarian';
+
+6.
+SELECT COUNT(*) AS prod_count
+FROM product p
+JOIN product_category pc ON p.product_id = pc.product_id
+JOIN category c ON pc.category_id = c.category_id
+WHERE c.name = 'Women';
+
 
