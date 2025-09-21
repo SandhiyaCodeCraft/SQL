@@ -346,6 +346,11 @@ WHERE dept_id NOT IN (SELECT dept_id FROM Employees);
   HAVING SUM(total_leaves)>10
   ORDER BY emp_id,leave_type;
 
+5.
+SELECT users.name, users.phone_number
+FROM users
+WHERE LENGTH(users.name) = 11;
+
 
 
 
