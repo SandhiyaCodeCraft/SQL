@@ -338,6 +338,13 @@ SELECT dept_name
 FROM Department
 WHERE dept_id NOT IN (SELECT dept_id FROM Employees);
 
+4.
+  SELECT emp_id,leave_type,SUM(total_leaves)AS TL
+  FROM employees
+  WHERE leave_type IN('ML','CL')
+  GROUP BY empid,leave_type
+  HAVING SUM(total_leaves)>10
+  ORDER BY emp_id,leave_type;
 
 
 
