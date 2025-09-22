@@ -26,6 +26,10 @@ FROM (
 ) t.................................................in this query the select from table is created using subquery....so specify by any alias name like this t.
 WHERE rnk <= 2;
 
+7.If two tables have common id to join with third table means ...join with first table
+8.if common element denotes two means join using both(OR) or use aanyone
+9.if we want to join three tables and there is connection with one table ...other two has no connection ...use the common table first then join others...
+
 1.
 SELECT categoryid, categoryname
 FROM cartoon
