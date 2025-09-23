@@ -3,7 +3,7 @@ REMEMBER
 2.IF WE USE COUNT,SUM,MAX MEANS ..THERE WE HAVE TO USE GROUP BY
 3.USE FETCH FIRST 5 ROWS ONLY .....INSTEAD OF LIMIT
 4.use datatype DATE in ANSISQL
-5.<>=not equal
+5.<>not equal
 6.Avoid usng alaising name
 7.In joins always check the tablename is accessed in every place
 1.%2 = 0
@@ -14,6 +14,11 @@ In MySQL there is no wildcards
   '[aeiouAEIOU]$'...endswith
   
  '^[aeiouAEIOU]'.*  '[aeiouAEIOU]$'.. .startswithand endwith any vowels
+contains vowels - '[aeiouAEIOU]'
+5.
+starts with digits----'^[0-9]'
+                 ends     '[0-9]$'
+               contains   '[0-9]'
 5.CONCAT(firstname, ' ',lastname)
 6.specify alais if we use subquery as table
 SELECT department_id,
